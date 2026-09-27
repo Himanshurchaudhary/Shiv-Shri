@@ -1,0 +1,414 @@
+import { useState } from "react";
+
+const sections = [
+  {
+    id: "overview",
+    title: "Overview",
+    content: `At Vardhan Foods, we respect your right to control your personal data. If you wish to delete your account and all associated information, you can request deletion at any time using the process outlined below.
+
+Once we receive your deletion request, our support team will process it within 7 business days and send you a confirmation email once your account and data have been permanently removed from our platform.`,
+  },
+  {
+    id: "how-to-request",
+    title: "How to Request Account Deletion",
+    content: `To request deletion of your Vardhan Foods account, please follow these steps:
+
+1. Send an email to vardhanfoods9@gmail.com from your registered email address, or mention your registered phone number in the email.
+2. Use the subject line: "Account Deletion Request"
+3. Include your full name and registered mobile number for identity verification.
+4. Our support team will verify your identity and process the request within 7 business days.
+
+Alternatively, you can WhatsApp or call us at +91 92295 66651 or +91 77650 26501 during support hours (Monday – Saturday, 9:00 AM – 6:00 PM IST) to initiate the request directly.`,
+  },
+  {
+    id: "data-deleted",
+    title: "What Data Will Be Deleted",
+    content: `Upon successful verification of your request, the following data associated with your account will be permanently deleted:
+
+• Your profile information (name, email address, phone number)
+• Saved delivery addresses and location preferences
+• Account credentials and login information
+• Saved app settings and notification preferences
+• Wishlist items, cart data, and saved product lists
+• Loyalty points or wallet balance (non-refundable after deletion)`,
+  },
+  {
+    id: "data-retained",
+    title: "What Data May Be Retained",
+    content: `In certain cases, we may be required to retain some information even after account deletion, in accordance with applicable laws and for legitimate business purposes:
+
+• Order history and transaction records (purchases, payments, invoices) may be retained for up to 90 days for accounting, tax, and legal compliance purposes — after which they will be permanently deleted.
+• Information necessary to resolve open disputes, enforce our agreements, or comply with legal obligations may be retained for the period required by applicable law.
+
+Once the applicable retention period has passed, all remaining data will be permanently and irreversibly deleted from our systems.`,
+  },
+  {
+    id: "contact",
+    title: "Contact Us",
+    content: `If you have any questions about the account deletion process or need help before proceeding, please reach out to us:
+
+Email: vardhanfoods9@gmail.com
+Phone / WhatsApp: +91 92295 66651 | +91 77650 26501
+Address: Near Masjid, Dhansoi, Khata No. 538, Plot No. 3275, Anchal - Rajpur, Dinara Road, Buxar, Bihar — 802117
+Support Hours: Monday – Saturday, 9:00 AM – 6:00 PM IST`,
+  },
+];
+
+export default function DeleteAccount() {
+  const [activeId, setActiveId] = useState("overview");
+
+  const handleScroll = (id) => {
+    setActiveId(id);
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  // Vardhan dark olive hero gradient
+  const heroGradient = {
+    background:
+      "radial-gradient(ellipse at 60% 40%, #4a5e28 0%, #3b4a1f 35%, #2d3a1e 70%, #1e2814 100%)",
+    position: "relative",
+    overflow: "hidden",
+  };
+
+  return (
+    <div className="min-h-screen" style={{ backgroundColor: "#f5f0e8" }}>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+        .vd-font { font-family: 'DM Sans', sans-serif; }
+
+        .hero-overlay::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background:
+            radial-gradient(ellipse at 25% 60%, rgba(212,160,23,0.12) 0%, transparent 55%),
+            radial-gradient(ellipse at 80% 10%, rgba(255,255,255,0.05) 0%, transparent 40%);
+          pointer-events: none;
+        }
+
+        .vd-pill {
+          background: rgba(212,160,23,0.18);
+          border: 1px solid rgba(212,160,23,0.4);
+          backdrop-filter: blur(4px);
+        }
+
+        .watermark {
+          position: absolute;
+          font-family: 'DM Sans', sans-serif;
+          font-weight: 900;
+          font-size: 8rem;
+          color: rgba(255,255,255,0.05);
+          line-height: 1;
+          letter-spacing: -4px;
+          user-select: none;
+          pointer-events: none;
+        }
+
+        .sidebar-btn-active {
+          background-color: rgba(212,160,23,0.15);
+          color: #c8850a;
+          font-weight: 700;
+          border-left: 3px solid #c8850a;
+        }
+        .sidebar-btn-inactive {
+          color: #6b7280;
+          border-left: 3px solid transparent;
+        }
+        .sidebar-btn-inactive:hover {
+          background-color: rgba(212,160,23,0.08);
+          color: #c8850a;
+        }
+
+        .section-card {
+          background: #ffffff;
+          border: 1px solid rgba(212,160,23,0.18);
+        }
+
+        .section-number {
+          background: radial-gradient(ellipse at 60% 40%, #4a5e28 0%, #2d3a1e 100%);
+        }
+      `}</style>
+
+      {/* ── HERO ── */}
+      <div
+        className="w-full py-16 px-4 text-center hero-overlay vd-font"
+        style={heroGradient}
+      >
+        {/* Watermarks */}
+        <span className="watermark" style={{ left: "16px", top: "50%", transform: "translateY(-50%)" }}>V</span>
+        <span className="watermark" style={{ right: "16px", bottom: "-20px" }}>VD</span>
+
+        {/* Brand pill */}
+        <div className="relative z-10 inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-6 vd-pill">
+          <span className="text-sm">🌿</span>
+          <span
+            className="text-xs font-semibold tracking-widest uppercase"
+            style={{ color: "#d4a017" }}
+          >
+            Vardhan Foods · 100% Natural Cold-Pressed Oils
+          </span>
+        </div>
+
+        {/* Heading */}
+        <h1 className="relative z-10 text-4xl md:text-5xl font-bold text-white mb-4 vd-font">
+          Delete Your{" "}
+          <span style={{ color: "#d4a017" }}>Account</span>
+        </h1>
+
+        <p
+          className="relative z-10 text-sm md:text-base max-w-lg mx-auto leading-relaxed vd-font"
+          style={{ color: "rgba(255,255,255,0.80)" }}
+        >
+          We're sorry to see you go. Here's everything you need to know about
+          requesting the deletion of your Vardhan Foods account and all
+          associated personal data.
+        </p>
+
+        {/* Meta badges */}
+        <div className="relative z-10 flex flex-wrap justify-center gap-6 mt-8 vd-font">
+          {[
+            "📅 Effective: January 1, 2026",
+            "📅 Last Updated: July 2026",
+            "📄 Version 1.0",
+          ].map((text) => (
+            <div
+              key={text}
+              className="flex items-center gap-2 text-xs"
+              style={{ color: "rgba(255,255,255,0.65)" }}
+            >
+              {text}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── BODY ── */}
+      <div className="max-w-5xl mx-auto px-4 py-10 flex flex-col lg:flex-row gap-8 vd-font">
+
+        {/* ── Sidebar ── */}
+        <aside className="lg:w-64 shrink-0">
+          <div className="lg:sticky lg:top-6 rounded-2xl overflow-hidden border shadow-sm"
+            style={{ borderColor: "rgba(212,160,23,0.25)" }}>
+
+            {/* Sidebar header */}
+            <div
+              className="px-4 py-3"
+              style={{
+                background: "radial-gradient(ellipse at 70% 50%, #4a5e28 0%, #1e2814 100%)",
+              }}
+            >
+              <p className="text-xs font-bold tracking-widest uppercase"
+                style={{ color: "#d4a017" }}>
+                Table of Contents
+              </p>
+            </div>
+
+            <div className="bg-white p-2">
+              {sections.map((s, i) => (
+                <button
+                  key={s.id}
+                  onClick={() => handleScroll(s.id)}
+                  className={`w-full text-left rounded-lg px-3 py-2 mb-0.5 text-xs leading-snug transition-colors ${
+                    activeId === s.id
+                      ? "sidebar-btn-active"
+                      : "sidebar-btn-inactive"
+                  }`}
+                >
+                  {i + 1}. {s.title}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Quick contact card */}
+          <div
+            className="mt-4 rounded-2xl border p-4"
+            style={{
+              borderColor: "rgba(212,160,23,0.3)",
+              backgroundColor: "rgba(212,160,23,0.07)",
+            }}
+          >
+            <p
+              className="text-xs font-bold uppercase tracking-widest mb-3"
+              style={{ color: "#c8850a" }}
+            >
+              Quick Contact
+            </p>
+            <a
+              href="tel:+919229566651"
+              className="flex items-center gap-2 text-xs text-gray-700 hover:text-amber-700 mb-2"
+            >
+              <span>📞</span> +91 92295 66651
+            </a>
+            <a
+              href="tel:+917765026501"
+              className="flex items-center gap-2 text-xs text-gray-700 hover:text-amber-700 mb-2"
+            >
+              <span>📞</span> +91 77650 26501
+            </a>
+            <a
+              href="mailto:vardhanfoods9@gmail.com"
+              className="flex items-center gap-2 text-xs text-gray-700 hover:text-amber-700 mb-2"
+            >
+              <span>✉️</span> vardhanfoods9@gmail.com
+            </a>
+            <p className="flex items-center gap-2 text-xs text-gray-500">
+              <span>🕐</span> Mon–Sat, 9AM–6PM IST
+            </p>
+          </div>
+        </aside>
+
+        {/* ── Main Content ── */}
+        <main className="flex-1 min-w-0">
+
+          {/* Warning banner */}
+          <div
+            className="rounded-2xl p-4 mb-8 flex gap-3"
+            style={{
+              backgroundColor: "#fef9ec",
+              border: "1px solid #d4a017",
+            }}
+          >
+            <span className="text-xl shrink-0 mt-0.5">⚠️</span>
+            <p className="text-sm leading-relaxed" style={{ color: "#7c5a04" }}>
+              Account deletion is{" "}
+              <strong>permanent and cannot be undone.</strong> All your saved
+              addresses, order preferences, and wishlist items will be lost.
+              Please make sure you no longer need your order history before
+              proceeding. Questions? Email{" "}
+              <strong>vardhanfoods9@gmail.com</strong>
+            </p>
+          </div>
+
+          {/* Sections */}
+          <div className="space-y-4">
+            {sections.map((section, index) => (
+              <div
+                key={section.id}
+                id={section.id}
+                className="section-card rounded-2xl shadow-sm overflow-hidden scroll-mt-6"
+              >
+                {/* Section header */}
+                <div
+                  className="flex items-center gap-3 px-5 py-4"
+                  style={{ borderBottom: "1px solid rgba(212,160,23,0.15)" }}
+                >
+                  <span
+                    className="section-number w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold shrink-0"
+                    style={{ color: "#d4a017" }}
+                  >
+                    {index + 1}
+                  </span>
+                  <h2 className="font-bold text-gray-900 text-base">
+                    {section.title}
+                  </h2>
+                </div>
+
+                {/* Section body */}
+                <div className="px-5 py-4">
+                  {section.content.split("\n\n").map((para, i) => (
+                    <p
+                      key={i}
+                      className="text-sm text-gray-600 leading-relaxed mb-3 last:mb-0 whitespace-pre-line"
+                    >
+                      {para}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* ── Footer CTA ── */}
+          <div
+            className="mt-10 rounded-2xl p-8 text-center hero-overlay"
+            style={heroGradient}
+          >
+            <span
+              className="watermark"
+              style={{ right: "20px", bottom: "-10px", fontSize: "5rem" }}
+            >
+              🌿
+            </span>
+
+            <div className="relative z-10">
+              {/* Pill */}
+              <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-4 vd-pill">
+                <span className="text-sm">🫒</span>
+                <span
+                  className="text-xs font-semibold tracking-widest uppercase"
+                  style={{ color: "#d4a017" }}
+                >
+                  Need Help Instead?
+                </span>
+              </div>
+
+              <h3
+                className="font-bold text-2xl mb-2 vd-font"
+                style={{ color: "#ffffff" }}
+              >
+                We'd love to{" "}
+                <span style={{ color: "#d4a017" }}>keep you</span>
+              </h3>
+
+              <p
+                className="text-sm max-w-md mx-auto leading-relaxed mb-6 vd-font"
+                style={{ color: "rgba(255,255,255,0.80)" }}
+              >
+                Having trouble with your orders or delivery? Our support team at
+                Vardhan Foods is happy to help before you decide to leave.
+              </p>
+
+              {/* CTA buttons */}
+              <div className="flex flex-wrap justify-center gap-3">
+                <a
+                  href="mailto:vardhanfoods9@gmail.com"
+                  className="font-semibold text-sm px-5 py-2.5 rounded-xl transition-colors vd-font"
+                  style={{
+                    backgroundColor: "#d4a017",
+                    color: "#1e2814",
+                  }}
+                >
+                  ✉️ vardhanfoods9@gmail.com
+                </a>
+                <a
+                  href="tel:+919229566651"
+                  className="border text-white font-semibold text-sm px-5 py-2.5 rounded-xl vd-font"
+                  style={{
+                    borderColor: "rgba(212,160,23,0.5)",
+                    background: "rgba(212,160,23,0.15)",
+                    backdropFilter: "blur(4px)",
+                  }}
+                >
+                  📞 +91 92295 66651
+                </a>
+                <a
+                  href="tel:+917765026501"
+                  className="border text-white font-semibold text-sm px-5 py-2.5 rounded-xl vd-font"
+                  style={{
+                    borderColor: "rgba(212,160,23,0.5)",
+                    background: "rgba(212,160,23,0.15)",
+                    backdropFilter: "blur(4px)",
+                  }}
+                >
+                  📞 +91 77650 26501
+                </a>
+              </div>
+
+              {/* Address */}
+              <p
+                className="mt-6 text-xs vd-font"
+                style={{ color: "rgba(255,255,255,0.55)" }}
+              >
+                📍 Near Masjid, Dhansoi, Khata No. 538, Plot No. 3275, Anchal -
+                Rajpur, Dinara Road, Buxar, Bihar — 802117
+              </p>
+            </div>
+          </div>
+
+        </main>
+      </div>
+    </div>
+  );
+}
